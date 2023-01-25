@@ -45,13 +45,6 @@ class LAB1{
 
 
          
-// System.out.println("Enter your Course :");
-//         System.out.println("Enter your Age :");
-//         System.out.println("Enter your University :");
-//         System.out.println("Enter your Gender :");
-//         System.out.println("Enter your Place :");
-//         System.out.println("Enter your State :");
-
 
 
 
