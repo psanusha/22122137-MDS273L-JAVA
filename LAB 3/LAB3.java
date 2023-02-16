@@ -12,17 +12,31 @@ class LAB3 {
         return mean;
     }
 
+    2
+    
+
     static float Median(int array[]) {
-        float median;
-        int x = array.length / 2;
-        Arrays.sort(array);
-        if (array.length % 2 != 0) {
-            median = array[x];
-        } else {
-            median = (array[x - 1] + array[x]) / 2.0f;
+    float median;
+    int n = array.length;
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (array[j] > array[j+1]) {
+                // swap array[j] and array[j+1]
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
         }
-        return median;
     }
+    int x = n / 2;
+    if (n % 2 != 0) {
+        median = array[x];
+    } else {
+        median = (array[x - 1] + array[x]) / 2.0f;
+    }
+    return median;
+}
+
 
     static int Mode(int[] array) {
         int maxvalue = 0;
