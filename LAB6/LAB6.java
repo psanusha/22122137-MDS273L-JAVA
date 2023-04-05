@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class lab6{
+public class LAB6{
      public static void vowelcounter(String filecontent) {
         String str = filecontent.toUpperCase();
         char[] alphabets = {'A','E','I','O','U','1','2','3','4','5','6','7','8','9','0'};
