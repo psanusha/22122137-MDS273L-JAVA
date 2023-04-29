@@ -12,7 +12,7 @@ class LAB3 {
         return mean;
     }
 
-    2
+    
     
 
     static float Median(int array[]) {
