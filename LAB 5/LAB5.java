@@ -33,76 +33,66 @@ public class LAB5 {
         Scanner scan = new Scanner(System.in);
         Student[] arr = new Student[100];
         int count = 0;
-        boolean found = true;
-
+        int input;
         do {
-            System.out.println("Enter 1 to add a student");
-            System.out.println("Enter 2 to search for a student");
-            System.out.println("Enter 3 to display all students");
-            System.out.println("Enter 4 to exit");
-
+            System.out.println("Enter your choice:");
+            System.out.println("1 --> Add student");
+            System.out.println("2 --> Search a student");
+            System.out.println("3 --> Display");
             int choice = scan.nextInt();
-            scan.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter name:");
-                    String name = scan.nextLine();
                     System.out.println("Enter regno:");
-                    int regno = scan.nextInt();
+                    int RegNo = scan.nextInt();
                     scan.nextLine();
-                    System.out.println("Enter email:");
-                    String email = scan.nextLine();
-                    System.out.println("Enter phone:");
-                    String phone = scan.nextLine();
+                    System.out.println("Enter name:");
+                    String Name = scan.nextLine();
+                    System.out.println("Enter email");
+                    String Email = scan.nextLine();
+                    System.out.println("Enter phone number:");
+                    String Phone = scan.nextLine();
                     System.out.println("Enter class:");
-                    String clss = scan.nextLine();
+                    String Class = scan.nextLine();
                     System.out.println("Enter department:");
-                    String dept = scan.nextLine();
-                    arr[count] = new Student(regno, name, email, phone, clss, dept);
-                    count++;
+                    String Department = scan.nextLine();
+                    arr[count] = new Student(RegNo,Name,Email,Phone,Class,Department);
+                    count = count + 1;
                     break;
 
                 case 2:
-                    System.out.println("Enter the name of the student you want to search:");
-                    String searchName = scan.nextLine();
-                    System.out.println("Enter the regno of the student you want to search:");
-                    int searchRegno = scan.nextInt();
+                    System.out.println("Enter the regno you want to search:");
+                    int sregno = scan.nextInt();
                     scan.nextLine();
-                    found = false;
+                    System.out.println("Enter the name you want to search:");
+                    String sname = scan.nextLine();
+                    boolean found = false;
                     for (int i = 0; i < count; i++) {
-                        if (arr[i].Name.equals(searchName) && arr[i].RegNo == searchRegno) {
+                        if (arr[i].RegNo == sregno && arr[i].Name.equals(sname)) {
                             arr[i].Display();
                             found = true;
                             break;
-                    if(!found){
-                System.out.println("Student not found");
-            }
-            break;
-                
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Name not found.");
+                    }
+                    break;
 
-            case 3:
-                 for(int i=0;i<count;i++){
-                   arr[i].display();
+                case 3:
+                    for (int i = 0; i < count; i++) {
+                        arr[i].Display();
+                    }
+                    break;
             }
-            break;
 
-            case 4:
-                System.out.println("Exist");
-            break;
+            System.out.println("Enter 0 to continue or any other number to exit:");
+            input = scan.nextInt();
+            scan.nextLine();
+        } while (input == 0);
+
+        
     }
+}
 
-        }while(choice!=4);
-
-
-
-
-        }
-
-    
-}}}
-
-
-                   
-                   
 
