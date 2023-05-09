@@ -22,5 +22,5 @@ Search for a student: Allows you to search for the details of a student from the
 Display all students: Displays the details of all the students in the array.
 The program runs in a loop until the user chooses to exit.
 
-![image](https://github.com/psanusha/22122137-MDS273L-JAVA/assets/118505694/4fcc159e-7830-4e09-86a6-b350fb6726aa)
+![image](https://github.com/psanusha/22122137-MDS273L-JAVA/assets/118505694/43a7af83-c846-48d7-8f59-57e9aff9b8f5)
 
