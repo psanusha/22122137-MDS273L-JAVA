@@ -1,10 +1,10 @@
 ## Student Details Program
 This is a Java program that allows you to store and manage details of students. It provides a menu-driven interface to add students, search for student details, and display all students' information.
 
-# Student Class
+#### Student Class
 The Student class represents a student and stores the following details:
 
-# Registration Number (regNo)
+#### Registration Number (regNo)
 Name
 Email
 Phone
@@ -12,7 +12,7 @@ Class
 Department
 The class has a constructor to initialize the values of a student and a method to print the details of the student.
 
-# Main Class
+#### Main Class
 The Main class contains the main method to run the program. It creates an array of Student objects to hold the details of up to 100 students.
 
 The program provides the following menu options:
