@@ -44,7 +44,7 @@ class LAB2{
                 boolean found = false;
                 for(int i=0;i<count;i++){
                     if(search.equalsIgnoreCase(arr[i])){
-                        System.out.println(search+"is at the index "+i);
+                        System.out.println(search+ " is at the index "+i);
                         found=true;
                         break;
                     }

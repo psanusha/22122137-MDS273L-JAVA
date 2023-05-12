@@ -8,7 +8,6 @@ class LAB3 {
             sum = sum + array[i];
         }
         mean = (float)sum / array.length;
-        System.out.println(mean);
         return mean;
     }
 
@@ -21,7 +20,6 @@ class LAB3 {
     for (int i = 0; i < n-1; i++) {
         for (int j = 0; j < n-i-1; j++) {
             if (array[j] > array[j+1]) {
-                // swap array[j] and array[j+1]
                 int temp = array[j];
                 array[j] = array[j+1];
                 array[j+1] = temp;
@@ -38,78 +36,73 @@ class LAB3 {
 }
 
 
-    static int Mode(int[] array) {
-        int maxvalue = 0;
-        int maxcount = 0;
-        for (int i = 0; i < array.length; i++) {
-            int count = 0;
-            for (int j = 0; j < array.length; j++) {
-                if (array[i] == array[j]) {
-                    count++;
-                }
+static float Mode(int[] array){
+    int maxcount=0;
+    int maxvalue=0;
+    for(int i =0;i<array.length;i++){
+        int count=1;
+        for(int j=0;j<i;j++){
+            if(array[i]==array[j]){
+                count=count+1;
             }
-            if (count > maxcount) {
-                maxcount = count;
-                maxvalue = array[i];
-            }
-        }
-        return maxvalue;
-    }
-
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int size;
-        System.out.println("Enter the size of the array: ");
-        size = Integer.parseInt(scan.nextLine());
-        int array[] = new int[size];
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter the values in the array" + i + ":");
-            array[i] = Integer.parseInt(scan.nextLine());
-        }
-        int ch;
-        do {
-            System.out.println("Choose your Operation\n1. Mean\n2. Median\n3. Mode\n4. All 3");
-            int choice = Integer.parseInt(scan.nextLine());
-            switch (choice) {
-                case 1:
-                    System.out.println("The mean of the array element is: " + Mean(array));
-                    break;
-                case 2:
-                    System.out.println("The median is: " + Median(array));
-                    break;
-                case 3:
-                    System.out.println("The mode is: " + Mode(array));
-                    break;
-                case 4:
-                    System.out.println("The mean is  :" + Mean(array) + "\nThe median is  :" + Median(array) + "\nThe mode is :" + Mode(array));
-                    break;
-                default:
-    System.out.println("Invalid choice!!!");
-
-
-       }
-       System.out.println("Press 1 continue: ");
-       ch=Integer.parseInt(scan.nextLine());
-    }while(ch==1);
-    
-    
-    
-}
-    }
-
             
 
+        }
+        if(count>maxcount){
+            maxvalue=array[i];
+            maxcount=count;
+        }
+        
+    }return maxvalue;
+
+}
+public static void main(String[]args){
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter the size of the array:");
+    int size = scan.nextInt();
+    int[] arr= new int[size];
+    int input;
+
+    System.out.println("Enter the values:");
+    for(int i =0;i<arr.length;i++){
+        arr[i]=scan.nextInt();
+    }
+
+    
+    do{
+        System.out.println("Enter your choice:");
+        System.out.println("1-->Mean");
+        System.out.println("2-->Median");
+        System.out.println("3-->Mode");
+        System.out.println("4-->Display all");
+        
+    int ch= scan.nextInt();
+    switch(ch){
+        case 1:
+        System.out.println("Mean is "+Mean(arr));
+        break;
+
+        case 2:
+        System.out.println("Median is "+Median(arr));
+        break;
+
+        case 3:
+        System.out.println("Mode is"+Mode(arr));
+        break;
+
+        case 4:
+        System.out.println("Mean is " +Mean(arr)+"\nMedian is " +Median(arr)+"\nMode is " +Mode(arr));
+        break;
+
+    }System.out.println("Enter 1 to continue");
+    input=scan.nextInt();
+    
 
 
+    }while(input==1);
 
+  }
+}
+            
 
-
-
-
-
-
-
-
-
-
-
+    
