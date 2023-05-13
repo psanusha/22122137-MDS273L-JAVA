@@ -1,5 +1,5 @@
 import java.util.*;
-class lab4aatry{
+class LAB4{
     static String acc_num;
     static String holder_name;
     static float acc_balance;
