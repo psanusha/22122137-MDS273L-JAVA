@@ -10,3 +10,5 @@ Use the file attached.
 Use functions to implement the six functions asked.
 Pass the file content to the functions and return the values accordingly.
 No Global variables are allowed to be used.
+
+![image](https://github.com/psanusha/22122137-MDS273L-JAVA/assets/118505694/ae769499-7984-4dcc-9e99-3a7dfcba4eed)
