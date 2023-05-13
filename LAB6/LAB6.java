@@ -264,20 +264,21 @@ public class LAB6{
         
     
     public static void main(String[] args){
-        String emp_txt ="";                  //empty string created
+        String txt1 ="";                  //empty string created
         try{
-            File file=new File("C:\Users\anusha ps\Downloads\text.txt");
+            File file=new File("C:/Users/anusha ps/Downloads/text.txt");
             Scanner read = new Scanner(file);
 
             while(read.hasNextLine()){
              String txt=read.nextLine();
-             emp_txt = emp_txt + txt1;        //concatination of string  
+             
+            txt1 += txt;        //concatination of string  
             }
         }catch(Exception ex){
             System.out.println((ex.getMessage()));
 
         }
-          String file = txt;
+          String file = txt1 ;
           String filecontent =file.replaceAll("[,.]", "").toLowerCase();
           String[] words = filecontent.split("[\\s]+"); 
 
@@ -295,3 +296,7 @@ public class LAB6{
 
     }
 }
+
+
+
+

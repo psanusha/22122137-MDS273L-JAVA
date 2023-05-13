@@ -1,145 +1,109 @@
 import java.util.*;
-class lab4{
-    static String acc_no;
-    static int balance;
-    static String cust_name;
-    static Scanner scan=new Scanner(System.in);
-    static String[] new_cust(){
-        String[] details=new String[3];
-        System.out.println("Enter the account holder's name : ");
-        details[0]=scan.nextLine();
-        System.out.println("Enter the account number : ");
-        details[1]=scan.nextLine();
-        System.out.println("Enter the amount you want to deposit : ");
-        details[2]=scan.nextLine();
-        return details; 
+class lab4aatry{
+    static String acc_num;
+    static String holder_name;
+    static float acc_balance;
+
+    static float[] deposit(Scanner scan) {
+        float[] deparr = new float[4];
+        deparr[0] = acc_balance;
+        System.out.println("Enter the amount you want to deposit:");
+        String depositStr = scan.next();
+        float deposit = Float.parseFloat(depositStr);    
+        deparr[1] = deposit;
+        acc_balance = acc_balance+deposit;
+        deparr[2] = 0; // Update this value accordingly if needed
+        deparr[3] = acc_balance;
+        return deparr;
     }
-    static int cust_deposit(int[] depositarray){
-        int d;
-        boolean dep;
-        System.out.println("Enter the amount you want to deposit : ");
-        d=Integer.parseInt(scan.nextLine());
-        balance=balance+d;
-        System.out.println("The new balance is : "+balance);
-        
-        dep=true;
-        for (int i=0;i<depositarray.length;i++){
-            depositarray[i]=d;
-        }
-        return d;
-    }
-    static int cust_withdrawal(int [] withdrawalarray){
-        int w;
-        boolean wd;
-        System.out.println("Enter the amount you want to withdraw : ");
-        w=Integer.parseInt(scan.nextLine());
-        if(w<balance){
-            balance=balance-w;
-            System.out.println("The new balance is : "+balance);
-            
-            wd=true;
-        }else{
-            System.out.println("Insufficient funds");
-        }
-        return w;
-    }
-    static String[][] cust_transaction(int d, int w, int k, boolean dep, boolean wd) {
-    String[][] transactions = new String[k + 1][4];
-    transactions[0][0] = "Type";
-    transactions[0][1] = "Amount";
-    transactions[0][2] = "Previous Balance";
-    transactions[0][3] = "Current Balance";
-    int prevBalance = balance;
-    for (int i = 1; i <= k; i++) {
-        
-        if (i == k && dep) {
-            transactions[i][0] = "Deposit";
-            transactions[i][1] = Integer.toString(d);
-        } else if (i == k && wd) {
-            transactions[i][0] = "Withdrawal";
-            transactions[i][1] = Integer.toString(w);
-            prevBalance = balance + w;
-        } else {
-            transactions[i][0] = "";
-            transactions[i][1] = "";
-        }
-        transactions[i][2] = Integer.toString(prevBalance);
-        balance += Integer.parseInt(transactions[i][1]);
-        transactions[i][3] = Integer.toString(balance);
-        prevBalance = balance;
-    }
-    for (int i = 0; i < transactions.length; i++) {
-        for (int j = 0; j < transactions[i].length; j++) {
-            System.out.print(transactions[i][j] + " ");
-        }
-        System.out.println();
-    }
-    return transactions;
-}
 
     
-    
-    static String cust_summary(){
-        System.out.println("Account Summary");
-        System.out.println("Account Holder's name : "+cust_name);
 
-        System.out.println("Account number : "+acc_no);
-        System.out.println("The current balance is : "+balance);
+    static float[] withdraw(Scanner scan){
+        float[] widarr = new float[4];
+        widarr[0]=acc_balance;
+        widarr[1]=0;
+        System.out.println("enter the amount you want to withdraw:");
+        String withdrawStr = scan.next();
+        float withdraw = Float.parseFloat(withdrawStr);
+        if(withdraw>acc_balance){
+            System.out.println("insufiicient balance");
+        }
+        else{
+            acc_balance = acc_balance-withdraw;
+            widarr[3]=acc_balance;
+        }
+        return widarr;
+    }
     
-return cust_name;
-        
+
+    static void transaction(float[][] arr, int count) {
+        System.out.println("Acc Balance |   Deposit    | Withdrawal   |   New Balance");
+        System.out.println("----------------------------------------------------");
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.printf("%12.2f | ", arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+
+    static void summary(){
+        System.out.println("account number is"+acc_num);
+        System.out.println("holder name is:"+holder_name);
+        System.out.println("account balance is"+acc_balance);
     }
     public static void main(String[] args){
-        String[] array=new String[3];
-        array=new_cust();
-        cust_name=array[0];
-        acc_no=array[1];
-        balance=Integer.parseInt(array[2]);
-        int k=0;
-        
-        int j;
-        int d=0;
-        int w=0;
-        
-       boolean dep=false;
-       boolean wd=false;
-        String n;
-        String[][] transactions;
-        int e;
+        Scanner scan = new Scanner(System.in);
+        float[][] arr = new float[1024][4];
+        System.out.println("enter acc_num:");
+        acc_num = scan.nextLine();
+        System.out.println("enter holdername:");
+        holder_name = scan.nextLine();
+        System.out.println("enter acc_balance");
+        acc_balance = Float.parseFloat(scan.nextLine());
+        int input;
+        int num=0;
+
         do{
-            int[] deposits=new int[k];
-        int[] withdrawals=new int[k];
-           System.out.println(" 1.Deposit \n 2.Withdrawal \n 3.Transactions \n 4.Summary \n Enter your choice : ");
-           e=Integer.parseInt(scan.nextLine());
-           switch(e){
-            case 1 : 
-            d=cust_deposit(deposits);
-            dep=true;
-            k++;
-            break;
-            case 2 : 
-            w=cust_withdrawal(withdrawals);
-            k++;
-            wd=true;
-            break;
-            case 3 :
-            transactions=cust_transaction(d,w,k,dep,wd);
-            break;
+            System.out.println("enter your choice:");
+            System.out.println("1-->Deposite");
+            System.out.println("2-->Withdraw");
+            System.out.println("3-->Transaction");
+            System.out.println("4-->Summary");
+            int choice = scan.nextInt();
+            
 
-            case 4 :
-            n=cust_summary();
-            break;
-            default:
-            System.out.println("Enter a valid choice.");
-           }
-            System.out.println("Press 0 to continue");
-            j=Integer.parseInt(scan.nextLine());
-        }while(j==0);
-        
-        
+            switch(choice){
+                case 1:
+                float[] a=deposit(scan);
+                arr[num] =a;
+                num = num+1;
+                
+                break;
 
+                case 2:
+                float[] b = withdraw(scan);
+                if(b.length==4){
+                    arr[num] =b;
+                    num = num+1;
+                    break;
 
-    }
+                }
+                
 
+                case 3:
+                transaction(arr,num);
+                break;
 
+                case 4:
+                summary();
+                break;
+            }
+            System.out.println("enter 1 to continue");
+            input = scan.nextInt();
+        }while(input ==1);
+
+   }
 }
